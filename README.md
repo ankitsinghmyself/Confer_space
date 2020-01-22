@@ -9,7 +9,7 @@ after that run `localhost\confer_space`
 	
 ## 💻 Overview of the files
 
-> 1.  tic-tac-toe.py - It is main file that have all functionalities 
+> 1.  confer.sql - It is mySQL data base file. 
 > 2.  *.gif & *.jpg - all are images files that i used in this project 
 
 
