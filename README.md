@@ -10,6 +10,7 @@ after that run `localhost\confer_space`
 ## 💻 Overview of the files
 
 > 1.  confer.sql - It is mySQL data base file. 
-> 2.  *.gif & *.jpg - all are images files that i used in this project 
+> 2.  Confer_space/Confer_Space/admin/ - This folder contains admin page
+> 3.  index.php - This is the main file that u have run it 
 
 
