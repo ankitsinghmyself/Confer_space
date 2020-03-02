@@ -2,7 +2,11 @@
 ## 🏄 Introduction
 This is a discussion forum where people come give thair review and some of questions answers.
 	
-## 🤖 To run CIS RASA BOT
+## 🤖 To Confer_space website
+## Ubutu
+You should download  [xampp web server](https://www.apachefriends.org/download.html)
+
+	
 To run this application you have to download `confer.sql` file and import using xampp software
 then download confer_space repo and paste that folder into `htdocs`
 after that run `localhost\confer_space`
