@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2019 at 01:26 PM
+-- Generation Time: May 22, 2019 at 08:40 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `uname` varchar(20) NOT NULL,
+  `userid` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -37,10 +37,29 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`uname`, `password`) VALUES
-('', ''),
-('admin', 'admin'),
-('sheela', '123');
+INSERT INTO `admin` (`userid`, `password`) VALUES
+('admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_notifications`
+--
+
+CREATE TABLE `admin_notifications` (
+  `notifid` int(11) NOT NULL,
+  `notification` text NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin_notifications`
+--
+
+INSERT INTO `admin_notifications` (`notifid`, `notification`, `date`) VALUES
+(6, 'user <b>kiran</b> joined Confer Space', '2019-05-03 13:23:59'),
+(19, 'user <b>sheela</b> joined Confer Space', '2019-05-22 23:20:25'),
+(20, 'user <b>ajanta</b> joined Confer Space', '2019-05-22 23:56:58');
 
 -- --------------------------------------------------------
 
@@ -60,31 +79,11 @@ CREATE TABLE `answers` (
 --
 
 INSERT INTO `answers` (`aid`, `answer`, `qid`, `userid`) VALUES
-(2, 'morning 8 am', 3, 'sheeku'),
 (4, '8 am', 1, 'askeee'),
-(6, '5 subjects', 2, 'anki'),
-(7, '3 lab per semester', 4, 'anki'),
-(8, '3 year\r\n', 5, 'anki'),
-(9, '22 students', 6, 'anki'),
-(10, 'almost 359 students.', 57, 'anki'),
-(11, '8', 1, 'sheeku'),
-(12, '6AM to 4pm', 1, 'anki'),
-(14, 'Fine', 58, 'anki'),
-(15, 'Sleep mode is a low power mode for electronic devices such as computers, televisions, and remote controlled devices. These modes save significantly on electrical consumption compared to leaving a device fully on and, upon resume, allow the user to avoid having to reissue instructions or to wait for a machine to reboot.', 59, 'ankit1994');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `notifications`
---
-
-CREATE TABLE `notifications` (
-  `notifid` int(10) NOT NULL,
-  `notification` text NOT NULL,
-  `uid` varchar(20) NOT NULL,
-  `status` varchar(10) NOT NULL DEFAULT 'unread',
-  `date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(6, 'hi askee', 1, 'anki'),
+(23, 'not necessarily', 64, 'anuj'),
+(24, 'around 4 to 5 months', 63, 'archi'),
+(25, '6 months\r\n', 63, 'anki');
 
 -- --------------------------------------------------------
 
@@ -105,14 +104,10 @@ CREATE TABLE `questions` (
 
 INSERT INTO `questions` (`qid`, `question`, `userid`, `date`) VALUES
 (1, 'timing of college canteen?', 'askeee', '2019-04-27 09:32:46'),
-(2, 'subjects in first semester?', 'renu', '2019-04-27 09:30:14'),
-(3, 'timing of the classes?', 'anki', '2019-04-27 09:30:14'),
-(4, 'number of labs per semester?', 'sheeku', '2019-04-27 09:30:14'),
 (5, 'duration of the course?', 'archi', '2019-04-27 09:30:14'),
-(6, 'what\'s the maximum strength of 1st semester?', 'askeee', '2019-04-27 09:36:59'),
-(57, 'how many students are in mca dept?', 'anki', '2019-05-01 09:02:58'),
-(58, 'How are you?', 'sheeku', '2019-05-02 21:25:50'),
-(59, 'What is the purpose of keeping electronic devices such as computers televisions and remote controlled devices on sleep mode?', 'ankit1994', '2019-05-02 23:11:50');
+(60, 'what is the timing of class?', 'anki', '2019-05-02 21:18:25'),
+(63, 'what is the duration of each semester?', 'anuj', '2019-05-03 10:56:00'),
+(64, 'Are Saturdays holiday? ', 'archi', '2019-05-03 11:09:48');
 
 -- --------------------------------------------------------
 
@@ -134,12 +129,46 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userid`, `name`, `password`, `email`, `mobile`, `gender`) VALUES
-('anki', 'ankit singh', 'ankit', 'ank@g.com', 9479396742, 'Male'),
-('ankit1994', 'Ankit Singh', '123456', 'ankitsinghmyself@gmail.com', 9479396742, 'Male'),
+('anisa', 'anisa rani', '12345', 'ani@gmail.com', 9087654321, 'Female'),
+('anki', 'Ankit Singh', '123', 'ank@g.com', 9479396742, 'Male'),
+('anuj', 'anuj srivastav', '123', 'anuj@gmail.com', 8907654321, 'Male'),
 ('archi', 'archana', '123', 'arch@gmail.com', 2087654321, 'Female'),
-('askeee', 'Astha', '123', 'askee@gmail.com', 9087654321, 'Male'),
-('renu', 'renuka', '123', 'renu@gmail.com', 789054321, 'Male'),
-('sheeku', 'Sheela Kumari', 'sheela', 'shee@gmail.com', 987654322, 'Female');
+('askeee', 'Astha', '123', 'askee@gmail.com', 9087654321, 'Male');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_notifications`
+--
+
+CREATE TABLE `user_notifications` (
+  `notifid` int(11) NOT NULL,
+  `notification` text NOT NULL,
+  `userid` varchar(20) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_notifications`
+--
+
+INSERT INTO `user_notifications` (`notifid`, `notification`, `userid`, `date`) VALUES
+(1, 'Welcome to Confer Space', 'anki', '2019-05-02 21:27:55'),
+(2, 'Welcome to Confer Space ', 'archi', '2019-05-02 21:27:55'),
+(3, 'Welcome to Confer Space', 'askeee', '2019-05-02 21:27:55'),
+(19, 'User <b>anki</b> answered your question : <b>hello</b><br/>Answer: <b>hi there</b>', 'anki', '2019-05-02 22:49:49'),
+(21, 'Welcome to Confer Space', 'anisa', '2019-05-02 23:01:02'),
+(22, 'User <b>renu</b> answered your question : <b>duration of the course?</b><br/>Answer: <b>three years\r\n</b>', 'archi', '2019-05-02 23:42:06'),
+(23, 'User <b>anki</b> answered your question : <b>timings for web lab sem 4?\r\n</b><br/>Answer: <b>8 am to 10:40 am</b>', 'anki', '2019-05-03 10:37:39'),
+(24, 'Welcome to Confer Space', 'anuj', '2019-05-03 10:44:07'),
+(25, 'User <b>anuj</b> answered your question : <b>Are Saturdays holiday? </b><br/>Answer: <b>not necessarily</b>', 'archi', '2019-05-03 11:10:26'),
+(26, 'User <b>archi</b> answered your question : <b>what is the duration of each semester?</b><br/>Answer: <b>around 4 to 5 months</b>', 'anuj', '2019-05-03 11:11:05'),
+(28, 'User <b>kiran</b> answered your question : <b>who am i?</b><br/>Answer: <b>fool</b>', 'anuj', '2019-05-03 13:24:22'),
+(29, 'User <b>anki</b> answered your question : <b>who am i?</b><br/>Answer: <b>hey there\r\n</b>', 'anuj', '2019-05-03 13:51:57'),
+(30, 'User <b>anki</b> answered your question : <b>what is the duration of each semester?</b><br/>Answer: <b>6 months\r\n</b>', 'anuj', '2019-05-09 13:11:25'),
+(31, 'User <b>sheeku</b> answered your question : <b>timings for web lab sem 4?\r\n</b><br/>Answer: <b>8</b>', 'anki', '2019-05-22 21:57:44'),
+(35, 'User <b>sheela</b> answered your question : <b>Are Saturdays holiday? </b><br/>Answer: <b>funny</b>', 'archi', '2019-05-22 23:21:03'),
+(38, 'User <b>ajanta</b> answered your question : <b>Are Saturdays holiday? </b><br/>Answer: <b>funny</b>', 'archi', '2019-05-22 23:57:49');
 
 --
 -- Indexes for dumped tables
@@ -149,7 +178,13 @@ INSERT INTO `users` (`userid`, `name`, `password`, `email`, `mobile`, `gender`) 
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`uname`);
+  ADD PRIMARY KEY (`userid`);
+
+--
+-- Indexes for table `admin_notifications`
+--
+ALTER TABLE `admin_notifications`
+  ADD PRIMARY KEY (`notifid`);
 
 --
 -- Indexes for table `answers`
@@ -159,13 +194,6 @@ ALTER TABLE `answers`
   ADD KEY `qid` (`qid`),
   ADD KEY `userid` (`userid`(10)),
   ADD KEY `userid_2` (`userid`);
-
---
--- Indexes for table `notifications`
---
-ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`notifid`),
-  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `questions`
@@ -181,26 +209,39 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`userid`);
 
 --
+-- Indexes for table `user_notifications`
+--
+ALTER TABLE `user_notifications`
+  ADD PRIMARY KEY (`notifid`),
+  ADD KEY `userid` (`userid`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin_notifications`
+--
+ALTER TABLE `admin_notifications`
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `notifications`
---
-ALTER TABLE `notifications`
-  MODIFY `notifid` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `qid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `qid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT for table `user_notifications`
+--
+ALTER TABLE `user_notifications`
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Constraints for dumped tables
@@ -213,17 +254,16 @@ ALTER TABLE `answers`
   ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`);
 
 --
--- Constraints for table `notifications`
---
-ALTER TABLE `notifications`
-  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `admin` (`uname`),
-  ADD CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `users` (`userid`);
-
---
 -- Constraints for table `questions`
 --
 ALTER TABLE `questions`
   ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`);
+
+--
+-- Constraints for table `user_notifications`
+--
+ALTER TABLE `user_notifications`
+  ADD CONSTRAINT `user_notifications_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
