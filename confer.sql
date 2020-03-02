@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 22, 2019 at 08:40 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 5.6.40
+-- Host: localhost
+-- Generation Time: Mar 02, 2020 at 09:47 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -49,7 +49,7 @@ INSERT INTO `admin` (`userid`, `password`) VALUES
 CREATE TABLE `admin_notifications` (
   `notifid` int(11) NOT NULL,
   `notification` text NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -59,7 +59,9 @@ CREATE TABLE `admin_notifications` (
 INSERT INTO `admin_notifications` (`notifid`, `notification`, `date`) VALUES
 (6, 'user <b>kiran</b> joined Confer Space', '2019-05-03 13:23:59'),
 (19, 'user <b>sheela</b> joined Confer Space', '2019-05-22 23:20:25'),
-(20, 'user <b>ajanta</b> joined Confer Space', '2019-05-22 23:56:58');
+(20, 'user <b>ajanta</b> joined Confer Space', '2019-05-22 23:56:58'),
+(21, 'user <b>ankit</b> joined Confer Space', '2020-03-02 13:22:16'),
+(22, 'user <b>alokk</b> joined Confer Space', '2020-03-02 13:23:43');
 
 -- --------------------------------------------------------
 
@@ -95,7 +97,7 @@ CREATE TABLE `questions` (
   `qid` int(11) NOT NULL,
   `question` text NOT NULL,
   `userid` varchar(20) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -107,7 +109,8 @@ INSERT INTO `questions` (`qid`, `question`, `userid`, `date`) VALUES
 (5, 'duration of the course?', 'archi', '2019-04-27 09:30:14'),
 (60, 'what is the timing of class?', 'anki', '2019-05-02 21:18:25'),
 (63, 'what is the duration of each semester?', 'anuj', '2019-05-03 10:56:00'),
-(64, 'Are Saturdays holiday? ', 'archi', '2019-05-03 11:09:48');
+(64, 'Are Saturdays holiday? ', 'archi', '2019-05-03 11:09:48'),
+(68, 'hi', 'anki', '2020-02-28 12:32:54');
 
 -- --------------------------------------------------------
 
@@ -129,8 +132,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userid`, `name`, `password`, `email`, `mobile`, `gender`) VALUES
+('alokk', 'alok kumar', '1234', 'alok@gmail.com', 9479396744, 'Male'),
 ('anisa', 'anisa rani', '12345', 'ani@gmail.com', 9087654321, 'Female'),
-('anki', 'Ankit Singh', '123', 'ank@g.com', 9479396742, 'Male'),
+('anki', 'ankit', '1234', 'ank@g.com', 9479396742, 'Male'),
+('ankit', 'ankit', '546', '123', 123, 'Male'),
 ('anuj', 'anuj srivastav', '123', 'anuj@gmail.com', 8907654321, 'Male'),
 ('archi', 'archana', '123', 'arch@gmail.com', 2087654321, 'Female'),
 ('askeee', 'Astha', '123', 'askee@gmail.com', 9087654321, 'Male');
@@ -145,7 +150,7 @@ CREATE TABLE `user_notifications` (
   `notifid` int(11) NOT NULL,
   `notification` text NOT NULL,
   `userid` varchar(20) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -168,7 +173,9 @@ INSERT INTO `user_notifications` (`notifid`, `notification`, `userid`, `date`) V
 (30, 'User <b>anki</b> answered your question : <b>what is the duration of each semester?</b><br/>Answer: <b>6 months\r\n</b>', 'anuj', '2019-05-09 13:11:25'),
 (31, 'User <b>sheeku</b> answered your question : <b>timings for web lab sem 4?\r\n</b><br/>Answer: <b>8</b>', 'anki', '2019-05-22 21:57:44'),
 (35, 'User <b>sheela</b> answered your question : <b>Are Saturdays holiday? </b><br/>Answer: <b>funny</b>', 'archi', '2019-05-22 23:21:03'),
-(38, 'User <b>ajanta</b> answered your question : <b>Are Saturdays holiday? </b><br/>Answer: <b>funny</b>', 'archi', '2019-05-22 23:57:49');
+(38, 'User <b>ajanta</b> answered your question : <b>Are Saturdays holiday? </b><br/>Answer: <b>funny</b>', 'archi', '2019-05-22 23:57:49'),
+(40, 'Welcome to Confer Space', 'ankit', '2020-03-02 13:22:16'),
+(41, 'Welcome to Confer Space', 'alokk', '2020-03-02 13:23:43');
 
 --
 -- Indexes for dumped tables
@@ -223,7 +230,7 @@ ALTER TABLE `user_notifications`
 -- AUTO_INCREMENT for table `admin_notifications`
 --
 ALTER TABLE `admin_notifications`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `answers`
@@ -235,13 +242,13 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `qid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `qid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `user_notifications`
 --
 ALTER TABLE `user_notifications`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Constraints for dumped tables
