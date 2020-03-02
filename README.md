@@ -3,7 +3,7 @@
 This is a discussion forum where people come give thair review and some of questions answers.
 	
 ## 🤖 To Confer_space website
-## Ubutu
+## Ubuntu
 You should download  [xampp web server](https://www.apachefriends.org/download.html)
 
 	
