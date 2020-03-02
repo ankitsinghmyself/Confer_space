@@ -2,11 +2,12 @@
 ## 🏄 Introduction
 This is a discussion forum where people come give thair review and some of questions answers.
 	
-## 🤖 To Confer_space website
+## Installation
 ## Ubuntu
 You should download  [xampp web server](https://www.apachefriends.org/download.html)
 
-	
+Step 1: Open Terminal (Tip:- To open terminal Ctrl+Alt+T)	
+
 To run this application you have to download `confer.sql` file and import using xampp software
 then download confer_space repo and paste that folder into `htdocs`
 after that run `localhost\confer_space`
