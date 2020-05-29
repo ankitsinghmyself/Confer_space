@@ -101,7 +101,7 @@
                 <div class="row">
                     <div class="col-md-6 mt-md-0 mt-6 text-left " style="margin-left:3%;" >
                         <h5 class=" font-weight-bold">Contact Us</h5>
-                        <p>Email-Id's: ankitsinghmyself@gmail.com<br />sheeku7@gmail.com
+                        <p>Email-Id's: ankitsinghmyself@gmail.com<br />
                             <br> College: CMRIT, AECS LAYOUT</p>
                     </div>
                     <hr class="clearfix w-60 d-md-none pb-2">
@@ -112,8 +112,7 @@
                     </div>
                 </div>
                 <div class="footer-copyright text-center py-3">© 2019 Copyright:
-                    <a href="https://ankitsinghprofile.wordpress.com" target="_blank"> Ankit</a> &<a
-                        href="https://www.linkedin.com/in/sh33ku" target="_blank"> Sheela</a> @CMRIT
+                    <a href="https://ankitsinghportfolio.herokuapp.com/" target="_blank"> Ankit Singh</a> @CMRIT
                 </div>
             </div>
         </footer>

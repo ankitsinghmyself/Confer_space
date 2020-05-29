@@ -6,17 +6,17 @@
     $date=$_SESSION['date'];
 
     if(isset($_POST) & !empty($_POST)){
-        $answer = mysql_real_escape_string($_POST['ans']);
+        $answer = mysqli_real_escape_string($conn,$_POST['ans']);
         $qid = $_GET['qid'];
         
         $sql = "insert into answers (userid,answer,qid) values ('$name', '$answer','$qid')";
-        $res = mysql_query($sql) or die(mysql_error($conn));
+        $res = mysqli_query($conn,$sql) or die(mysql_error($conn));
         if($res){
-            $query = mysql_query("select question,userid from questions where qid='$qid'");
-            $ques=mysql_fetch_array($query);
+            $query = mysqli_query($conn,"select question,userid from questions where qid='$qid'");
+            $ques=mysqli_fetch_array($query);
             $q=$ques['question'];
             $uid=$ques['userid'];
-            $notif = mysql_query("insert into user_notifications (notification,userid) values ('User <b>$name</b> answered your question : <b>$q</b><br/>Answer: <b>$answer</b>','$uid')");
+            $notif = mysqli_query($conn,"insert into user_notifications (notification,userid) values ('User <b>$name</b> answered your question : <b>$q</b><br/>Answer: <b>$answer</b>','$uid')");
             echo "<script type='text/javascript'>alert('Your answer Submitted Successfully');</script>";
             header("Location:home.php");
         }else{

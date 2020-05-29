@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include("/opt/lampp/htdocs/Confer_Space/connect.php");
+  require('../connect.php');
 
   $mobile=$_POST['mobile'];
   $email=$_SESSION['email'];

@@ -54,8 +54,8 @@
                         <a class="nav-link" href="user_notifications.php">
                         <?php
                             $q="SELECT count(*) FROM user_notifications where userid='".$_SESSION['username']."'";
-                            $d=mysql_query($q);
-                            $notif_count=mysql_fetch_row($d);
+                            $d=mysqli_query($conn,$q);
+                            $notif_count=mysqli_fetch_row($d);
                             ?>
                             Notifications<b><i><span style='background-color:grey;color:white;'><?php echo"$notif_count[0]";?></span></i></b>
 
@@ -93,9 +93,9 @@
                  <p>
                     <?php
                         
-                        $ques=mysql_query("SELECT `question`,`date`  FROM questions where userid='".$_SESSION['username']."' order by `date` desc");
+                        $ques=mysqli_query($conn,"SELECT `question`,`date`  FROM questions where userid='".$_SESSION['username']."' order by `date` desc");
                         
-                        while($q=mysql_fetch_array($ques))
+                        while($q=mysqli_fetch_array($ques))
                         {
                            
                             

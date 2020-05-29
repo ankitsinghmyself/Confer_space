@@ -54,8 +54,8 @@
                         <a class="nav-link" href="user_notifications.php">
                         <?php
                             $q="SELECT count(*) FROM user_notifications where userid='".$_SESSION['username']."'";
-                            $d=mysql_query($q);
-                            $notif_count=mysql_fetch_row($d);
+                            $d=mysqli_query($conn,$q);
+                            $notif_count=mysqli_fetch_row($d);
                             ?>
                             Notifications<b><i><span style='background-color:grey;color:white;'><?php echo"$notif_count[0]";?></span></i></b>
 
@@ -93,16 +93,16 @@
                  <p>
                     <?php
                         
-                        $ans=mysql_query("SELECT qid,answer,userid  FROM answers where userid='".$_SESSION['username']."'");
+                        $ans=mysqli_query($conn,"SELECT qid,answer,userid  FROM answers where userid='".$_SESSION['username']."'");
                         
-                        while($a=mysql_fetch_array($ans))
+                        while($a=mysqli_fetch_array($ans))
                         {
                             $qid=$a['qid'];
                             
                            
-                            $ques=mysql_query("SELECT `question`,`date` FROM questions WHERE qid='$qid'order by `date` desc");
+                            $ques=mysqli_query($conn,"SELECT `question`,`date` FROM questions WHERE qid='$qid'order by `date` desc");
 
-                            while($q=mysql_fetch_array($ques)){
+                            while($q=mysqli_fetch_array($ques)){
                                 
                                 print ("<div class='right'><small style='color:blue; font-size:0.13in;'><i>Posted on:".$q['date']."</i></small></h4><br/>");
                                 print ("<b><u>Question:</u></b> <i>".$q['question']."</i><br/>");

@@ -1,7 +1,7 @@
 <?php
     include('session.php');
    	
-    require('/opt/lampp/htdocs/Confer_Space/connect.php');
+    require('../connect.php');
     $name=$_SESSION['username'];
     $date=$_SESSION['date'];
 
